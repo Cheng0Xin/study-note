@@ -1,0 +1,29 @@
+\section{Fourier Analysis}
+
+\subsection{Fourier Series}
+
+Fourier series are infinite series that \ctextit{represent periodic functions} in terms of cosines and sines.
+Given a \ctextbf{trigonometric series} shown in Eq. \ref{eq:tri-series}, the $a_i$ and $b_i$ are the constants, called \ctextbf{coefficients} of the series.
+
+\begin{align}
+  a_0 + a_1 \cos x + b_1 \sin x + a_2 \cos 2x + b_2 \sin 2x + \dots = a_0 + \sum^\infty_{n=1}(a_n \cos nx + b_n \sin nx)
+  \label{eq:tri-series}
+\end{align}
+
+Suppose that a given function $f(x)$ of period $2\pi$ can be represented by Eq. \ref{eq:tri-series}, then we have Eq. \ref{eq:fx-tri-series} which is formally called \ctextbf{Fourier Series} of function $f(x)$.
+
+\begin{align}
+  f(x) = a_0 + \sum^\infty_{n=1}(a_n \cos nx + b_n \sin nx)
+  \label{eq:fx-tri-series}
+\end{align}
+
+The calculation of coefficients are followed the formulas shown in Eq. \ref{eq:fourier-calcu}.
+
+\begin{align}
+  \begin{cases}
+    a_0 &= \frac{1}{2\pi}\int_{-\pi}^{\pi} f(x) dx \\
+    a_n &= \frac{1}{\pi}\int_{-\pi}^{\pi} f(x)\cos nx dx, (n \geq 1) \\
+    b_n &= \frac{1}{\pi}\int_{-\pi}^{\pi} f(x)\sin nx dx, (n \geq 1)
+  \end{cases}
+  \label{eq:fourier-calcu}
+\end{align}

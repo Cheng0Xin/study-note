@@ -1,0 +1,46 @@
+\section{Coq Proof System}
+
+\subsection{Gallina Language specifications}
+
+Some useful data types are already defined in \ctextit{Coq.Init.Datatypes}.
+
+\begin{itemize}
+  \renewcommand{\labelitemi}{$\dagger$}
+  \item Definition of Enumerated Type,
+    \begin{lstlisting}[language=coq]
+      Inductive day : Type :=
+        | monday : day
+        | tuesday : day
+        | wednesday : day
+        | thursday : day
+        | friday : day
+        | saturday : day
+        | sunday : day.
+    \end{lstlisting}
+  \item Definition of Function,
+    \begin{lstlisting}[language=coq]
+      (* Function definition *)
+      Definition next_week (d:day) : day :=
+        match d with
+        | monday => tuesday
+        | tuesday => wednesday
+        | wednesday => thursday
+        | thursday => friday
+        | friday => monday
+        | saturday => monday
+        | sunday => monday
+        end.
+      
+      (* Command to execute the function *)
+      Compute (next_week saturday).
+    \end{lstlisting}
+  \item Theorem and Proofs (\emph{Example} here could be \emph{Theorem}, \emph{Lemma}, etc),
+    \begin{lstlisting}[language=coq]
+      Example test_next_weekday:
+        (next_week (next_week saturday)) = tuesday.
+      Proof. 
+        simpl. reflexivity. 
+      Qed.
+    \end{lstlisting},
+  \item Marcos
+\end{itemize}

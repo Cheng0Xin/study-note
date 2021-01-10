@@ -1,0 +1,91 @@
+\section{Propositional Logic}
+
+In order to make arguments rigorous, we need to develop a language in which we can \ctextbf{express sentences in such a way that brings out their logical structure}. 
+The language we begin with is the language of \ctextbf{propositional logic}. 
+It is based on propositions, or declarative sentences which one can, in principle, argue as being \ctextbf{true} or \ctextbf{false}.
+
+Primarily, we are interested in precise declarative sentences, or statements about the behavior of computer systems, or programs. 
+Not only do we want to specify such statements but we also want to \ctextbf{check whether a given program, or system, fulﬁls a speciﬁcation at hand}. 
+Thus, we need to develop a \ctextbf{calculus of reasoning} which allows us to draw conclusions from given assumptions, like initialized variables, which are reliable in the sense that they preserve truth: if all our assumptions are true, then our conclusion ought to be true as well. 
+A much more diﬃcult question is whether, \ctextbf{given any true property of a computer program, we can ﬁnd an argument in our calculus that has this property as its conclusion}.
+
+The logics we intend to design are \ctextbf{symbolic} in nature. 
+We translate a certain suﬃciently large subset of all English declarative sentences into strings of symbols. 
+This gives us a compressed but still complete encoding of declarative sentences and allows us to concentrate on the mere mechanics of our argumentation. 
+This is important since \ctextbf{speciﬁcations of systems or software are sequences of such declarative sentences}. 
+It further opens up the possibility of \ctextbf{automatic manipulation} of such speciﬁcations, a job that computers just love to do 1 . 
+Our strategy is to consider certain declarative sentences as being 
+\footnote{In mathematical logic, an atomic formula (also known simply as an atom) is \ctextbf{a formula with no deeper propositional structure}.} \ctextbf{atomic}, or \ctextbf{indecomposable}.
+
+Compound formulas are formed by combining the atomic formulas using the logical connectives. 
+We can form more complex sentences according to the rules below:
+\begin{description}
+  \item[$\neg$]: $\neg \phi$ means $\phi$ not happened;
+  \item[$\vee$]: $\phi \vee \psi$ means one of $\phi$ and $\psi$ happened;
+  \item[$\wedge$]: $\phi \vee \psi$ means both of $\phi$ and $\psi$ happened;
+  \item[$\to$]: in $\phi \to \psi$, $\phi$ is the assumption, and $\psi$ is the conclusion.
+\end{description}
+
+\subsection{Natural deduction}
+
+In natural deduction, we have such a collection of \ctextbf{proof rules} (shown in Tab. \ref{tab:rndeduction}). 
+They allow us to infer formulas from other formulas. 
+By applying these rules in succession, we may infer a conclusion from a set of premises.
+
+\begin{table}[H]
+  \centering
+  \caption{The rules for natural deduction}
+  \vspace{0.5em}
+  \begin{tabular}{c c c}
+    \hline
+    \thead{Operator} & \thead{Introduction} & \thead{Elimination} \\
+    \hline
+    $\wedge$ & 
+    $\wedge i$: $\frac{\phi, \psi}{\phi \wedge \psi}$ & 
+    $\wedge e_1$: $\frac{\phi \wedge \psi}{\phi}$, 
+    $\wedge e_2$: $\frac{\phi \wedge \psi}{\psi}$ \\
+
+    $\vee$ & 
+    $\vee i_1$: $\frac{\phi}{\phi \vee \psi}$, 
+    $\vee i_2$: $\frac{\psi}{\phi \vee \psi}$ & 
+    $\vee e$: $\frac{\phi \vee \psi, \boxed{\phi \dots \chi}, \boxed{\psi \dots \chi}}{\chi}$ \\
+
+    $\to$ &
+    $\to i$: $\frac{\boxed{\phi \dots \psi}}{\phi \to \psi}$ &
+    $\to e$: $\frac{\phi, \phi \to \psi}{\psi}$\\
+
+    $\neg$ &
+    $\neg i$: $\frac{\boxed{\phi \dots \bot}}{\neg \phi}$ &
+    $\neg e$: $\frac{\phi, \neg\phi}{\bot}$ \\
+
+    $\bot$ &
+    no introduction rule for $\bot$ &
+    $\bot e$: $\frac{\bot}{\phi}$\\
+
+    $\neg\neg$ &
+    no introduction rule for $\neg\neg$ &
+    $\neg\neg e$: $\frac{\neg\neg\phi}{\phi}$ \\
+    \hline
+  \end{tabular}
+  \label{tab:rndeduction}
+\end{table}
+
+Some useful derived rules:
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{c c}
+    $MT$: $\frac{\phi \to \psi, \neg \psi}{\neg \phi}$ &
+    $\neg\neg i$: $\frac{\phi}{\neg\neg \phi}$ \\
+    $PBC$: $\frac{\boxed{\neg \phi \dots \bot}}{\phi}$ &
+    $LEM$: $\frac{}{\phi \vee \neg \phi}$ \\
+  \end{tabular}
+\end{table}
+
+\subsection{Propositional logic as a formal language}
+
+Here we use a formal language to describe propositional logic.
+A defining grammar in \ctextbf{Backus Naur form (BNF)} of the logic is presented as follows:
+\begin{align*}
+  \phi, \psi ::= p | (\neg \phi) | (\phi \wedge \psi) | (\phi \vee \psi) | (\phi \to \psi)
+\end{align*}

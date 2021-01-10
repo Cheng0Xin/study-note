@@ -1,0 +1,34 @@
+\section{Probability and Statistics}
+
+\subsection{Special Distributions}
+
+\subsubsection{The Discrete Distributions}
+
+\clanewdef{Bernoulli Distribution}{def:bernoulli-distribution}{
+  A random variable $X$ has the Bernoulli distribution with parameter $p (0 \leq p \leq 1)$ if $X$ 
+  can take only the values 0 and 1 and the probabilities are 
+  \begin{align*}
+    Pr(X = 1) = p \text{ and } Pr(X = 0) = 1 - p
+  \end{align*}
+  The p.f. (probability function) of $X$ can be written as follows:
+  \begin{align*}
+    f(x|p) = \begin{cases}
+      p^x (1 - p)^(1-x) & \text{ for } x = 0, 1, \\ 
+      0 & \text{otherwise}
+    \end{cases}
+  \end{align*}
+
+  \begin{itemize}
+    \item $E(X) = 1 \cdot p + 0 \cdot (1 - p) = p$
+    \item $E(X^2) = E(X) = p$
+    \item $Var(X) = E(X^2) - [E(X)]^2 = p(1 - p)$
+  \end{itemize}
+
+  The m.g.f. (moment generating function) of $X$ is
+  \begin{align*}
+    \psi(t) = E(e^{tX}) = pe^t + (1 - p) \text{ for } -\infty < t < \infty.
+  \end{align*}
+}
+
+
+

@@ -1,0 +1,15 @@
+\tikzstyle{cla-location}=[draw=black, minimum size=1cm, text width=2.5cm, align=center, thick]
+\tikzstyle{cla-edge}=[->, draw=black, thick]
+\newcommand{\clanodetxt}[1]{\textit{#1}}
+
+\begin{tikzpicture}[node distance=2.5cm]
+  \node[cla-location] (PL) {
+    \clanodetxt{Propositional Logic}
+    };
+  \node[cla-location] (FL) [below of=PL] {\clanodetxt{First-order Logic}};
+  \node[cla-location] (HL) [right=3.5cm of FL] {\clanodetxt{Higher-order Logic}};
+
+  \path 
+    (PL) edge[cla-edge] node[right, text width=3.4cm] {\footnotesize{variables are quantified on the sets}} (FL)
+    (FL) edge[cla-edge] node[text width=3cm] {\footnotesize{quantifiers over the arbitrary nested sets}} (HL);
+\end{tikzpicture}

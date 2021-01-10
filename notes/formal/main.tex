@@ -1,0 +1,16 @@
+\chapter{Logic}
+
+The aim of logic in computer science is to \ctextit{develop languages to model the situations we encounter as computer science professionals}, in such a way that we can \ctextit{reason about them formally}.
+The formal proof of the formula $\phi$ is a finite sequence of judgements $(\psi_i)^n_{i=1}$, where each $\psi_i$ is either an \footnote{An axiom A is a judgement evidently claimed to be true.} \ctextbf{axiom} $A_i$, or a formula inferred from the subset $\{\psi_k\}_{k=1}^{i-1}$ of previously derived formulas according the \ctextbf{rules of inference}.
+A logical inference is a transfer from one judgement to another, which preserve truth.
+In developing logics, we are not concerned with what the sentences really mean, but only in their logical structure.
+
+\begin{figure}[ht]
+  \centering
+  \input{notes/formal/imgs/overview}
+  \caption{Connections among logics. \textit{Propositional Logic}, not contain any restriction on the form of propositional variables.}
+  \label{fig:conn-logics}
+\end{figure}
+
+\input{notes/formal/propositional-logic.tex}
+\input{notes/formal/coq.tex}
