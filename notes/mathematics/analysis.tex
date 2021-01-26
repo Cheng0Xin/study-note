@@ -1,4 +1,83 @@
-\section{Fourier Analysis}
+\section{Analysis}
+
+\subsection{Logic}
+
+This part is concluded from 
+\begin{itemize}
+  \item \emph{Mathematical Analysis I} written by Vladimir A. Zorich, and
+  \item \emph{Discrete Mathematics and its Applications} written by Kenneth H. Rosen.
+\end{itemize}
+
+\crule
+
+\subsubsection{Propositional Logic}
+
+A \ctextbf{proposition} or \ctextbf{statement} is a \ctextbf{declarative} 
+sentence that is either true or false, but not both.
+It is the basic building blocks of logic.
+The \ctextbf{propositional variables} are denoted by letters,
+while the \ctextbf{truth values} of them, 
+i.e. true and false, are denoted by T, F respectively.
+
+The area of logic that deals with propositions is called 
+\ctextbf{propositional logic} or \ctextbf{propositional calculus}.
+
+New propositions, called \ctextbf{compound propositions}, are 
+\ctextit{formed from existing propositions}using 
+\ctextbf{logical operators (connectives)}.
+
+The BNF of propositions is, 
+\begin{align*}
+  proposition := p_1 | p_2 | 
+    \ctextbf{a}: \neg{p_1} | 
+    \ctextbf{b}: p_1 \wedge p_2 | 
+    \ctextbf{c}: p_1 \vee p_2 | 
+    \ctextbf{d}: p_1 \rightarrow p_2 | 
+    \ctextbf{e}: p_1 \leftrightarrow p_2
+\end{align*}
+where, 
+\begin{itemize}
+  \item[a.] negation.
+  \item[b.] conjunction.
+  \item[c.] disjunction.
+  \item[d.] conditional statement or implication.
+    $p_1$ is hypothesis, $p_2$ is conclusion.
+    $p_2 \rightarrow p_1$ is the \ctextbf{converse} of d,
+    and $\neg{p_2} \rightarrow \neg{p_1}$ is the \ctextbf{contrapositive} of d.
+    The statement and its contrapositive are \ctextbf{equivalent}.
+  \item[e.] bi-conditional statement or bi-implication.
+\end{itemize}
+
+According to the logical operators, we can get bit operations, 
+i.e. \textbf{OR} $\vee$, \textbf{AND} $\wedge$ and \textbf{XOR} $\oplus$.
+
+\crule
+
+\subsubsection{Remarks on Proofs} 
+
+\begin{itemize}
+  \item[I.] The proof of such a proposition consists of 
+    \ctextit{constructing a chain} 
+    $A \Rightarrow C_1 \Rightarrow \dots \Rightarrow C_n \Rightarrow B$
+    of implications, each element of which is either an axiom or 
+    a previously proved proposition.
+  \item[II.] In \ctextbf{proof by contradiction} we shall also use 
+    \ctextbf{law of excluded middle}, by virtue of which the statement
+    $A \wedge \neg{A}$ is considered \ctextit{true independently of the specific
+    content} of the statement A.
+\end{itemize}
+
+\crule
+
+\subsubsection{Notation System}
+
+\subsection{Set}
+
+\subsubsection{Notation System}
+
+\subsection{Function}
+
+\subsubsection{Notation System}
 
 \subsection{Fourier Series}
 
