@@ -104,19 +104,13 @@
 }
 
 
-% Font color
-\newcommand{\ctextbf}[1]{ % textbf red
-  \textbf{\textcolor{red!65}{#1}}
-}
 
-\newcommand{\ctextit}[1]{ % textbf red
-  \textit{\textcolor{cyan!85}{#1}}
-}
 
 % Code
 \RequirePackage{listings}
 \RequirePackage{color}
 \RequirePackage{xcolor}
+% \RequirePackage[dvipsnames]{xcolor}
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
@@ -159,4 +153,18 @@
 
 \newcommand{\clalistcode}[2] {
   \lstinputlisting[language=#1]{#2}
+}
+
+% Font color
+
+\newcommand{\ctextbf}[1]{ % textbf red
+  {\color{red}#1}
+}
+
+\newcommand{\ctextit}[1]{ % textbf red
+  \colorbox{blue!30}{#1}
+}
+
+\newcommand{\crule}{
+  \color{black!80} \rule{.9\linewidth}{0.5mm} 
 }
