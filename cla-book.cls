@@ -158,13 +158,19 @@
 % Font color
 
 \newcommand{\ctextbf}[1]{ % textbf red
-  {\color{red}#1}
+  {\!\color{red}#1\!}
 }
 
 \newcommand{\ctextit}[1]{ % textbf red
-  \colorbox{blue!30}{#1}
+  \!\colorbox{blue!30}{#1}\!
 }
 
 \newcommand{\crule}{
   \color{black!80} \rule{.9\linewidth}{0.5mm} 
 }
+
+% Paragraph
+\RequirePackage[english]{babel}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
