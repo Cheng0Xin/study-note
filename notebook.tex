@@ -1,5 +1,7 @@
 \documentclass{cla-book}
 
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=black,bookmarksopen=true]{hyperref}
+
 \title{Claude's Research Book}
 \author{Cheng Xin}
 \makeindex
@@ -9,15 +11,13 @@
 \maketitle
 \tableofcontents
 
-% The research of Hybrid System
-% Includes 
-% - Hybrid Programming
-% - Uppaal System
 \include{notes/mathematics/main}
 \include{notes/physics/main}
 \include{notes/control-theory/main}
 \include{notes/hybrid-dynamical-system/main}
 \include{notes/formal/main}
+\include{notes/paper/main}
 
+\bibliography{notebook}
   
 \end{document}
