@@ -1,0 +1,267 @@
+\section{Preliminary}
+
+\subsection{Logic}
+
+This part is concluded from 
+\begin{itemize}
+  \item \emph{Mathematical Analysis I} written by Vladimir A. Zorich, and
+  \item \emph{Discrete Mathematics and its Applications} written by Kenneth H. Rosen.
+\end{itemize}
+
+\crule
+
+\subsubsection{Propositional Logic}
+
+A \ctextbf{proposition} or \ctextbf{statement} is a \ctextbf{declarative} 
+sentence that is either true or false, but not both.
+It is the basic building blocks of logic.
+The \ctextbf{propositional variables} are denoted by letters,
+while the \ctextbf{truth values} of them, 
+i.e. true and false, are denoted by T, F respectively.
+
+The area of logic that deals with propositions is called 
+\ctextbf{propositional logic} or \ctextbf{propositional calculus}.
+
+New propositions, called \ctextbf{compound propositions}, are 
+\ctextit{formed from existing propositions}using 
+\ctextbf{logical operators (connectives)}.
+
+The BNF of propositions is, 
+\begin{align*}
+  proposition := p_1 | p_2 | 
+    \textbf{a}: \neg{p_1} | 
+    \textbf{b}: p_1 \wedge p_2 | 
+    \textbf{c}: p_1 \vee p_2 | 
+    \textbf{d}: p_1 \rightarrow p_2 | 
+    \textbf{e}: p_1 \leftrightarrow p_2
+\end{align*}
+where, \emph{a} is negation, \emph{b} is conjunction, \emph{c} is disjunction,
+\emph{d} is conditional statement or implication.
+\emph{e} is bi-conditional statement or bi-implication.
+In \emph{d}, $p_1$ is hypothesis, $p_2$ is conclusion.
+$p_2 \rightarrow p_1$ is the \ctextbf{converse} of \emph{d},
+and $\neg{p_2} \rightarrow \neg{p_1}$ is the \ctextbf{contrapositive} of \emph{d}.
+The statement and its contrapositive are \ctextbf{equivalent}.
+
+According to the logical operators, we can get bit operations, 
+i.e. \textbf{OR} $\vee$, \textbf{AND} $\wedge$ and \textbf{XOR} $\oplus$.
+
+\crule
+
+\subsubsection{Application of Propositional Logic}
+
+\begin{itemize}
+  \item[A.] Translating English Sentence. 
+    Translating sentences into compound statements removes the ambiguity.
+  \item[B.] System Specification. 
+    Translating sentences in natural language into logical expression is
+    an essential part of specifying both hardware and software system.
+  \item[C.] Other applications, such as Boolean Searches, Logic Puzzles, 
+    and Logic Circuits.
+\end{itemize}
+
+\crule
+
+\subsubsection{Propositional Equivalences}
+
+There three types of compound propositions,
+\begin{itemize}
+  \item \ctextbf{Tautology}: a compound proposition that is 
+    \ctextit{always true}, 
+    no matter what the truth values of the propositional variables 
+    that occur in it.
+  \item \ctextbf{Contradiction}: a compound proposition that is 
+    \ctextit{always false}.
+  \item \ctextbf{Contingency}: a compound proposition that is neither a 
+    tautology nor a contradiction.
+\end{itemize}
+
+Compound propositions that have the same truth values in all possible cases are 
+called \ctextbf{logically equivalent}. 
+A formal definition of \emph{Logical Equivalence} is that
+the compound propositions $p$, $q$ are called logically equivalent if 
+\ctextit{$p \leftrightarrow q$ is a tautology}. 
+The notation $p \equiv q$ denotes that $p$ and $q$ are logically equivalent.
+
+\begin{table}[H]
+  \centering
+  \caption{Logical Equivalences (Part I)}
+  \vspace{0.5em}
+  \begin{tabular}{c c}
+    \toprule
+    \midrule
+    \thead{Equivalence} & \thead{Name} \\
+    \midrule
+    $\neg(p \wedge q) \equiv \neg{p} \vee \neg{q}$, 
+    $\neg(p \vee q) \equiv \neg{p} \wedge \neg{q}$ & De Morgan's laws \\
+    $p \wedge T \equiv p$, $p \vee F \equiv p$ & Identity laws \\
+    $p \vee T \equiv T$, $p \wedge F \equiv F$ & Domination laws \\
+    $p \vee p \equiv p$, $p \wedge p \equiv p$ & Idempotent laws \\
+    $\neg{(\neg{p})} \equiv p$ & Double negation law \\
+    $p \vee q \equiv q \vee p$,
+    $p \wedge q \equiv q \wedge p$ & Commutative laws \\
+    $p \vee q \vee r \equiv p \vee (q \vee r)$, 
+    $p \wedge q \wedge r \equiv p \wedge (q \wedge r)$ & Associative laws \\
+    $p \vee (q \wedge r) \equiv (p \wedge q) \vee (p \wedge r)$,
+    $p \wedge (q \vee r) \equiv (p \vee q) \wedge (p \vee r)$ 
+    & Distributive laws \\
+    $p \vee (p \wedge q) \equiv p$,
+    $p \wedge (p \vee q) \equiv p$ & Absorption laws \\
+    $p \vee \neg{p} \equiv T$, $p \wedge \neg{q} \equiv F$ & Negation laws \\
+    \toprule
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{Logical Equivalences (Part II)}
+  \vspace{0.5em}
+  \begin{tabular}{c c}
+    \toprule
+    \midrule
+    \thead{No.} & \thead{Equivalence} \\
+    \midrule
+    1 & $p \rightarrow q \equiv \neg{p} \vee q$ \\
+    2 & $p \rightarrow q \equiv \neg{q} \rightarrow \neg{p}$ \\
+    3 & $(p \rightarrow q) \wedge (p \rightarrow r) \equiv p \rightarrow (q \wedge r)$ \\
+    4 & $(p \rightarrow q) \vee (p \rightarrow r) \equiv p \rightarrow (q \vee r)$ \\
+    5 & $(p \rightarrow r) \wedge (q \rightarrow r) \equiv (p \vee q) \rightarrow r$ \\
+    6 & $(p \rightarrow r) \vee (q \rightarrow r) \equiv (p \wedge q) \rightarrow r$ \\
+    7 & $p \leftrightarrow q \equiv (p \rightarrow q) \wedge (q \rightarrow p)$ \\
+    8 & $p \leftrightarrow q \equiv (p \wedge q) \vee (\neg{p} \wedge \neg{q})$ \\
+    \toprule
+  \end{tabular}
+\end{table}
+
+We will sometimes use the notation $\vee^{n}_{j=1}p_j$ for 
+$p_1 \vee p_2 \vee \dots \vee p_n$
+and $\wedge^{n}_{j=1}p_j$ for
+$p_1 \wedge p_2 \wedge \dots \wedge p_n$.
+
+A proposition in a compound proposition can \ctextit{be replaced by}
+a compound proposition that is \ctextit{logically equivalent to it}
+without changing the truth value of the original compound proposition.
+
+A compound proposition is \ctextbf{satisfiable}  
+\ctextit{if these is an assignment} of truth values to its variables
+that makes it true.
+A compound proposition is \ctextbf{unsatisfiable} \ctextit{if and only if}
+its negation is a tautology.
+When we find \ctextit{a particular assignment} of truth values that makes a 
+compound proposition true, we have shown that it is satisfiable; 
+such an assignment is called a \ctextbf{solution} of this 
+\ctextit{particular satisfiability problem}.
+
+\crule
+
+\subsubsection{Predicates and Quantifiers}
+
+The area of logic that deals with predicates and quantifiers is called the 
+\ctextbf{predicate calculus}.
+
+\textbf{Predicates:} The statement $P(x)$ is also said to be the value of the 
+\ctextbf{propositional function} $P$ at $x$.
+It has two parts,
+\begin{itemize}
+  \item the first part, the variable $x$,
+    is the subject of the statement;
+  \item the second part -- the \ctextbf{predicate},
+    refers to a property that the subject of the statement can have.
+\end{itemize}
+
+A statement of the form $P(x_1, x_2, \dots, x_n)$ is the value of 
+the propositional function $P$ at the n-tuple $(x_1, \dots, x_n)$, 
+and $P$ is also called an \ctextbf{n-place predicate} or a 
+\ctextbf{n-ary predicate}.
+
+\textbf{Predicate Logic used in Programs:} 
+The statements that describe valid input are known as 
+\ctextbf{preconditions} and the conditions that the output should 
+satisfy when the program has run are known as \ctextbf{postconditions}.
+
+\textbf{Quantifiers:} Quantification expresses the extent to which 
+a predicate is true over \ctextit{a range} \ctextit{of elements}.
+There are two types of quantifications, 
+\begin{itemize}
+  \item \ctextbf{Universal quantification} $\forall$, which tells us that a 
+    predicate is true for every element under consideration.
+    A \ctextbf{counterexample} of $\forall{x}P(x)$ is an element for which 
+    $P(x)$ is false.
+  \item \ctextbf{Existential quantification} $\exists$, which tells us that there
+    is one or more element under consideration for which the predicate is true.
+    Moreover, \ctextbf{Uniqueness quantification} is denoted by $\exists!$.
+\end{itemize}
+
+Many mathematical statements assert that a property is true for all values of 
+a variable in a particular \ctextbf{domain}.
+
+\textbf{Quantifiers with Restricted Domains:}
+\begin{align*}
+  \forall{x}P(x) \xrightarrow[]{\text{Restrict the domain}} \forall{C(x)}(P(x)) \equiv \forall{x}(C(x) \rightarrow P(x)) \\
+  \exists{x}P(x) \xrightarrow[]{\text{Restrict the domain}} \exists{C(x)}(P(x)) \equiv \exists{x}(C(x) \wedge P(x)) 
+\end{align*}
+
+\textbf{Binding Variables:} When a quantifier is used on the variable $x$,
+we say that this occurrence of the variable is \ctextbf{bound}.
+An occurrence of a variable that is not bound by a quantifier or set equal to 
+a particular value is said to be \ctextbf{free}.
+\ctextit{All the variables} that occur in a propositional function 
+\ctextit{must be bound} or 
+\ctextit{set equal to a particular value to turn it into a proposition}.
+
+\textbf{Scope:} The part of a logical expression to which a quantifier is 
+applied is called the \ctextbf{scope} of this quantifier.
+Consequencely, a variable is free if it is \ctextit{outside the scope} 
+of all quantifiers in the formula that specify this variable.
+
+\textbf{Logical Equivalences Involving Quantifiers}
+
+\begin{align*}
+  \forall{x}(P(x) \wedge Q(x)) \equiv \forall{x}P(x) \wedge \forall{x}Q(x) \\
+  \exists{x}(P(x) \vee Q(x)) \equiv \exists{x}P(x) \vee \exists{x}Q(x)
+\end{align*}
+
+De Morgan's laws for quantifiers:
+\begin{align*}
+  \neg{\forall{x}P(x)} \equiv \exists{x}\neg{P(x)} \\
+  \neg{\exists{x}Q(x)} \equiv \forall{x}\neg{Q(x)}
+\end{align*}
+
+\textbf{Logic Programming:} \ctextbf{Prolog} programs include a set of 
+declarations consisting of two types of statements, \ctextbf{Prolog facts}
+and \ctextbf{Prolog rules}.
+\begin{itemize}
+  \item Prolog facts define predicates by specifying the elements that satisfy 
+    these predicates.
+  \item Prolog rules are used to define new predicates using those already 
+    defined by Prolog facts.
+\end{itemize}
+
+
+\crule
+
+\subsubsection{Remarks on Proofs} 
+
+\begin{itemize}
+  \item[I.] The proof of such a proposition consists of 
+    \ctextit{constructing a chain} 
+    $A \Rightarrow C_1 \Rightarrow \dots \Rightarrow C_n \Rightarrow B$
+    of implications, each element of which is either an axiom or 
+    a previously proved proposition.
+  \item[II.] In \ctextbf{proof by contradiction} we shall also use 
+    \ctextbf{law of excluded middle}, by virtue of which the statement
+    $A \wedge \neg{A}$ is considered \ctextit{true independently of the specific
+    content} of the statement A.
+\end{itemize}
+
+\crule
+
+\subsubsection{Notation System}
+
+\subsection{Set}
+
+\subsubsection{Notation System}
+
+\subsection{Function}
+
+\subsubsection{Notation System}
