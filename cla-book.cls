@@ -16,6 +16,7 @@
 
 % Table
 \RequirePackage{array}
+\RequirePackage{booktabs}
 \setlength{\arrayrulewidth}{0.3mm} % border
 \setlength{\tabcolsep}{8pt} % margin to border
 \renewcommand{\arraystretch}{2}
@@ -174,3 +175,6 @@
 
 \setlength{\parindent}{0em}
 \setlength{\parskip}{1em}
+
+% Spacing between itemize
+\setlist[1]{itemsep=-3pt}

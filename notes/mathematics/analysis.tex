@@ -29,27 +29,128 @@ New propositions, called \ctextbf{compound propositions}, are
 The BNF of propositions is, 
 \begin{align*}
   proposition := p_1 | p_2 | 
-    \ctextbf{a}: \neg{p_1} | 
-    \ctextbf{b}: p_1 \wedge p_2 | 
-    \ctextbf{c}: p_1 \vee p_2 | 
-    \ctextbf{d}: p_1 \rightarrow p_2 | 
-    \ctextbf{e}: p_1 \leftrightarrow p_2
+    \textbf{a}: \neg{p_1} | 
+    \textbf{b}: p_1 \wedge p_2 | 
+    \textbf{c}: p_1 \vee p_2 | 
+    \textbf{d}: p_1 \rightarrow p_2 | 
+    \textbf{e}: p_1 \leftrightarrow p_2
 \end{align*}
-where, 
-\begin{itemize}
-  \item[a.] negation.
-  \item[b.] conjunction.
-  \item[c.] disjunction.
-  \item[d.] conditional statement or implication.
-    $p_1$ is hypothesis, $p_2$ is conclusion.
-    $p_2 \rightarrow p_1$ is the \ctextbf{converse} of d,
-    and $\neg{p_2} \rightarrow \neg{p_1}$ is the \ctextbf{contrapositive} of d.
-    The statement and its contrapositive are \ctextbf{equivalent}.
-  \item[e.] bi-conditional statement or bi-implication.
-\end{itemize}
+where, \emph{a} is negation, \emph{b} is conjunction, \emph{c} is disjunction,
+\emph{d} is conditional statement or implication.
+\emph{e} is bi-conditional statement or bi-implication.
+In \emph{d}, $p_1$ is hypothesis, $p_2$ is conclusion.
+$p_2 \rightarrow p_1$ is the \ctextbf{converse} of \emph{d},
+and $\neg{p_2} \rightarrow \neg{p_1}$ is the \ctextbf{contrapositive} of \emph{d}.
+The statement and its contrapositive are \ctextbf{equivalent}.
 
 According to the logical operators, we can get bit operations, 
 i.e. \textbf{OR} $\vee$, \textbf{AND} $\wedge$ and \textbf{XOR} $\oplus$.
+
+\crule
+
+\subsubsection{Application of Propositional Logic}
+
+\begin{itemize}
+  \item[A.] Translating English Sentence. 
+    Translating sentences into compound statements removes the ambiguity.
+  \item[B.] System Specification. 
+    Translating sentences in natural language into logical expression is
+    an essential part of specifying both hardware and software system.
+  \item[C.] Other applications, such as Boolean Searches, Logic Puzzles, 
+    and Logic Circuits.
+\end{itemize}
+
+\crule
+
+\subsubsection{Propositional Equivalences}
+
+There three types of compound propositions,
+\begin{itemize}
+  \item \ctextbf{Tautology}: a compound proposition that is 
+    \ctextit{always true}, 
+    no matter what the truth values of the propositional variables 
+    that occur in it.
+  \item \ctextbf{Contradiction}: a compound proposition that is 
+    \ctextit{always false}.
+  \item \ctextbf{Contingency}: a compound proposition that is neither a 
+    tautology nor a contradiction.
+\end{itemize}
+
+Compound propositions that have the same truth values in all possible cases are 
+called \ctextbf{logically equivalent}. 
+A formal definition of \emph{Logical Equivalence} is that
+the compound propositions $p$, $q$ are called logically equivalent if 
+\ctextit{$p \leftrightarrow q$ is a tautology}. 
+The notation $p \equiv q$ denotes that $p$ and $q$ are logically equivalent.
+
+\begin{table}[H]
+  \centering
+  \caption{Logical Equivalences (Part I)}
+  \vspace{0.5em}
+  \begin{tabular}{c c}
+    \toprule
+    \midrule
+    \thead{Equivalence} & \thead{Name} \\
+    \midrule
+    $\neg(p \wedge q) \equiv \neg{p} \vee \neg{q}$, 
+    $\neg(p \vee q) \equiv \neg{p} \wedge \neg{q}$ & De Morgan's laws \\
+    $p \wedge T \equiv p$, $p \vee F \equiv p$ & Identity laws \\
+    $p \vee T \equiv T$, $p \wedge F \equiv F$ & Domination laws \\
+    $p \vee p \equiv p$, $p \wedge p \equiv p$ & Idempotent laws \\
+    $\neg{(\neg{p})} \equiv p$ & Double negation law \\
+    $p \vee q \equiv q \vee p$,
+    $p \wedge q \equiv q \wedge p$ & Commutative laws \\
+    $p \vee q \vee r \equiv p \vee (q \vee r)$, 
+    $p \wedge q \wedge r \equiv p \wedge (q \wedge r)$ & Associative laws \\
+    $p \vee (q \wedge r) \equiv (p \wedge q) \vee (p \wedge r)$,
+    $p \wedge (q \vee r) \equiv (p \vee q) \wedge (p \vee r)$ 
+    & Distributive laws \\
+    $p \vee (p \wedge q) \equiv p$,
+    $p \wedge (p \vee q) \equiv p$ & Absorption laws \\
+    $p \vee \neg{p} \equiv T$, $p \wedge \neg{q} \equiv F$ & Negation laws \\
+    \toprule
+  \end{tabular}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{Logical Equivalences (Part II)}
+  \vspace{0.5em}
+  \begin{tabular}{c c}
+    \toprule
+    \midrule
+    \thead{No.} & \thead{Equivalence} \\
+    \midrule
+    1 & $p \rightarrow q \equiv \neg{p} \vee q$ \\
+    2 & $p \rightarrow q \equiv \neg{q} \rightarrow \neg{p}$ \\
+    3 & $(p \rightarrow q) \wedge (p \rightarrow r) \equiv p \rightarrow (q \wedge r)$ \\
+    4 & $(p \rightarrow q) \vee (p \rightarrow r) \equiv p \rightarrow (q \vee r)$ \\
+    5 & $(p \rightarrow r) \wedge (q \rightarrow r) \equiv (p \vee q) \rightarrow r$ \\
+    6 & $(p \rightarrow r) \vee (q \rightarrow r) \equiv (p \wedge q) \rightarrow r$ \\
+    7 & $p \leftrightarrow q \equiv (p \rightarrow q) \wedge (q \rightarrow p)$ \\
+    8 & $p \leftrightarrow q \equiv (p \wedge q) \vee (\neg{p} \wedge \neg{q})$ \\
+    \toprule
+  \end{tabular}
+\end{table}
+
+We will sometimes use the notation $\vee^{n}_{j=1}p_j$ for 
+$p_1 \vee p_2 \vee \dots \vee p_n$
+and $\wedge^{n}_{j=1}p_j$ for
+$p_1 \wedge p_2 \wedge \dots \wedge p_n$.
+
+A proposition in a compound proposition can \ctextit{be replaced by}
+a compound proposition that is \ctextit{logically equivalent to it}
+without changing the truth value of the original compound proposition.
+
+A compound proposition is \ctextbf{satisfiable}  
+\ctextit{if these is an assignment} of truth values to its variables
+that makes it true.
+A compound proposition is \ctextbf{unsatisfiable} \ctextit{if and only if}
+its negation is a tautology.
+When we find \ctextit{a particular assignment} of truth values that makes a 
+compound proposition true, we have shown that it is satisfiable; 
+such an assignment is called a \ctextbf{solution} of this 
+\ctextit{particular satisfiability problem}.
 
 \crule
 
