@@ -136,10 +136,12 @@
   tabsize=2
 }
 
+% Ocaml language
 \lstdefinelanguage{ocaml} {
   style=common
 }
 
+% Coq language
 \lstdefinelanguage{coq} {
   morekeywords={
     Inductive, Type, Definition, match, with, end, Compute,
@@ -148,6 +150,19 @@
     },
   sensitive=true,
   morecomment=[s]{(*}{*)}, 
+  morestring=[b]",
+  style=common
+}
+
+% Racket language
+\lstdefinelanguage{racket} {
+  morekeywords={
+    define, list, lambda,
+    cond, if, and, or,
+    define-macro
+    },
+  sensitive=true,
+  morecomment=[l]{;}, 
   morestring=[b]",
   style=common
 }
