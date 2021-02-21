@@ -1,0 +1,84 @@
+\section{Make a language}
+
+To recap—every language in Racket has two essen­tial compo­nents:
+\begin{itemize}
+  \item A \ctextbf{reader}, which converts source code from a string of 
+    char­ac­ters into paren­the­sized S-expres­sions.
+  \item An \ctextbf{expander}, which deter­mines how these S-expres­sions 
+    cor­re­spond to real Racket expres­sions, which are then eval­u­ated to 
+    pro­duce a result.
+\end{itemize}
+
+\textbf{First try:}
+\begin{lstlisting}[language=racket]
+(define (read-syntax path port)
+  (define src-lines (port->lines port))
+  (datum->syntax #f '(module lucy br
+                      42)))
+
+(provide read-syntax)
+\end{lstlisting}
+
+\textbf{Second try:}
+\begin{lstlisting}[language=racket]
+(define (read-syntax path port)
+  ; port->lines retrieve the lines from our input port
+  (define src-lines (port->lines port))
+
+  ; format-datums : ~a marks the place where the argumet string will be substituted
+  (define src-datums (format-datums '(handle ~a) src-lines))
+
+  ; double "'" to protect the src-datums from turning into code
+  ; we can use it to debug
+  ;; (define src-datums (format-datums ''(handle ~a) src-lines))
+
+  ; "`" allows the insertion of variables in the list
+  ; "," indicates the variable
+  ; ",@" splits the list and inserts them all
+  (define module-datum `(module stacker-mod br
+                          ,@src-datums))
+  (datum->syntax #f module-datum))
+
+(provide read-syntax)
+\end{lstlisting}
+
+\textbf{Third try:}
+\begin{lstlisting}[language=racket]
+#lang br/quicklang
+
+(define (read-syntax path port)
+  (define src-lines (port->lines port))
+  (define src-datums (format-datums '(handle ~a) src-lines))
+  (define module-datum `(module stacker-mod "stacker.rkt"
+                          ,@src-datums))
+  (datum->syntax #f module-datum))
+
+(provide read-syntax)
+
+(define-macro (stacker-module-begin HANDLE-EXPR ...)
+  #'(#%module-begin
+     HANDLE-EXPR ...
+     (display (first stack))))
+
+(provide (rename-out [stacker-module-begin #%module-begin]))
+
+(define stack empty)
+
+(define (pop-stack!)
+  (define arg (first stack))
+  (set! stack (rest stack))
+  arg)
+
+(define (push-stack! arg)
+  (set! stack (cons arg stack)))
+
+(define (handle [arg #f])
+  (cond
+    [(number? arg) (push-stack! arg)]
+    [(or (equal? + arg) (equal? * arg))
+     (define op-result (arg (pop-stack!) (pop-stack!)))
+     (push-stack! op-result)]))
+
+(provide handle)
+(provide + *)
+\end{lstlisting}
