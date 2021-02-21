@@ -1,0 +1,41 @@
+\section{Behavior Tree}
+
+\crule
+
+\subsection{2017- Evolutionary Behavior Tree Approaches for 
+  Navigating Platform Games}
+
+\textbf{Reference:} \cite{nicolau2016evolutionary}
+
+\textbf{Purpose:}
+\begin{itemize}
+  \item Basic on \ctextit{the Mario AI benchmark platform}.
+  \item Deal with \ctextbf{navigation} and \ctextbf{reactiveness} 
+    by using \ctextit{$A^*$ approach}.
+\end{itemize}
+
+The paper showed the applicability of \ctextbf{behavior trees (BTs)} as 
+representations for \ctextbf{evolutionary computation}, 
+and their flexibility for incorporations of diverse algorithms to 
+deal with specific aspects of bot control in game environment.
+
+They investigated the use of \ctextbf{grammatical evolution (GE)} to evolve BTs.
+
+Nodes in BT can return a success or failure (\emph{True} or \emph{False}) value 
+to their parent node and are divided into two major categories:
+\begin{itemize}
+  \item Control nodes:
+    \begin{itemize}
+      \item \textbf{Sequence}, execute children nodes from left to right until 
+        one return failure,
+      \item \textbf{Selector}, execute children nodes until one returns success,
+      \item \textbf{Filter}, include \{ loops, running children nodes until 
+        failure \}.
+    \end{itemize}
+  \item Leaf nodes;
+\end{itemize}
+
+\subsection{2006- Introducing Grammar Based Extensions for 
+  Grammatical Evolution}
+
+\textbf{Reference:} \cite{nicolau2006introducing}
