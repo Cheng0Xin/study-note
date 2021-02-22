@@ -1,0 +1,188 @@
+\subsection{Differential Equations and Domains}
+
+\subsubsection{The Meaning of Differential Equations}
+
+\textbf{Ordinary Differential Equation (ODE):} 
+Let $f: D \to \mathds{R}^n$ be a function on a 
+$\text{domain } D \subseteq \mathds{R} \times \mathds{R}^n$,
+i.e., an open and connected subset.
+The function $Y: J \to \mathds{R}^n$ is a \ctextbf{solution} on 
+interval $J \subseteq \mathds{R}$ of the \ctextbf{initial value problem}
+  \begin{align*}
+    &y'(t) = f(t, y) \\
+    &y(t_0) = y_0
+  \end{align*}
+  with ODE $y' = f(t, y)$, 
+if, for all times $t \in J$: 
+\vspace{-.5cm}
+\begin{enumerate}
+  \item solution $Y$ is in the domain $(t, Y(t)) \in D$; 
+  \item time-derivative $Y'(t)$ exists and is $Y'(t) = f(t, Y(t))$; and
+  \item initial value $Y(t_0)=y_0$ is respected at the initial time, also
+    $t_0 \in J$.
+\end{enumerate}
+
+To solve the equations, the infinite continuous line will be 
+\ctextbf{discretized} into the finite discrete points.
+If the equation is quite well behaved,
+the discretizations would approach the true continuous solutions as the 
+$\Delta$ gets smaller.
+However, no matter how small a discretization $\Delta > 0$ we choose,
+that discretization will be arbitrarily \ctextit{far away} 
+from the true continuous solution for large $t$.
+
+\subsubsection{Domains of Differential Equations}
+
+When and how do physics and cyber elements interact?
+\vspace{-.5cm}
+\begin{itemize}
+  \item Physics might evolve and the cyber elements 
+    \ctextit{interrupt physics periodically} to make measurements of 
+    the current state of the system in order to decide what to do next 
+    (\ctextbf{Periodical Runtime Model}).
+  \item Or the physics might \ctextit{trigger certain conditions or events} 
+    that cause cyber elements to compute their respective responses to 
+    these events (\ctextbf{Event-Driven Runtime Model}).
+\end{itemize}
+
+The model needs to specify when physics \underline{stops evolving} to 
+give cyber a chance to perform its task.
+This information is what is called an \ctextbf{evolution domain $Q$} of 
+a differential equation,
+which describes a \underline{region} that the system \ctextit{cannot leave} 
+while following that particular continuous mode of the system.
+
+\textbf{Evolution Domain Constraint:} 
+A differential equation $x' = f(x)$ with \textbf{evolution domain Q} 
+is denoted by $x' = f(x) \& Q$ using a conjunctive notation (\&) 
+between the differential equation and its evolution domain.
+This notation $x' = f(x) \& Q$ signifies that the system obeys 
+both the differential equation $x' = f(x)$ and the evolution domain $Q$. 
+The system follows this differential equation for 
+\ctextit{any duration while inside the region $Q$}, 
+but is \ctextit{never allowed to leave} the region described by $Q$.
+So the system evolution has to stop while the state is not in $Q$.
+
+\subsubsection{Syntax of Continuous Programs}
+
+\textbf{Continuous Program:} 
+Layer 1 of hybrid programs (HPs) comprises \ctextbf{continuous programs}. 
+If $x$ is a variable, $e$ is any term possibly containing $x$,
+and $Q$ a formula of \underline{first-order logic} of real arithmetic, 
+then continuous programs are of the form,
+\begin{align*}
+  \alpha ::= x' = e \& Q
+\end{align*}
+
+\textbf{Term:} A term $e_i$ is a \ctextbf{polynomial term} defined by 
+the grammar (where $e_0$, $e_1$ are terms, $x$ is a variable, 
+and $c$ is a rational number constant),
+\begin{align*}
+  e_0, e_1 = x | c | e_0 + e_1 | e_0 \cdot e_1
+\end{align*}
+
+\textbf{Formulas of First-order Logic of Leal Arithmetic:}
+The formulas of first-order logic of real arithmetic are defined by the 
+following grammar (where $P$,$Q$ are formulas of first-order logic of 
+real arithmetic, $e_0$, $e_1$ are terms, and $x$ is a variable),
+\begin{align*}
+  P, Q = e_0 \geq e_1 | e_0 = e_1 | \neg{P} | P \vee Q | P \wedge Q | 
+    P \rightarrow Q | P \leftrightarrow Q | \forall{x}P | \exists{x}P
+\end{align*}
+
+\subsubsection{Semantics of Continuous Programs}
+
+\textbf{Semantics of Terms:}
+The value of term $e$ in state $\omega \in S$ is a real number denoted 
+$\omega\llbracket e \rrbracket$ and is defined by \ctextbf{induction} on the 
+structure of $e$:
+\begin{align*}
+  \omega\llbracket x \rrbracket &= \omega(x) 
+    \text{, if $x$ is a variable} \\
+  \omega\llbracket c \rrbracket &= c 
+    \text{, if $c \in \mathds{Q}$ is a rational constant}\\
+  \omega\llbracket e_0 + e_1 \rrbracket &= \omega\llbracket e_0 \rrbracket + 
+    \omega\llbracket e_1 \rrbracket \\
+  \omega\llbracket e_0 \cdot e_1 \rrbracket &= \omega\llbracket e_0 \rrbracket 
+    \cdot \omega\llbracket e_1 \rrbracket \\
+\end{align*}
+
+A state $(\omega: \mathscr{V} \to \mathds{R}) \in \mathscr{S}$ 
+is a \ctextbf{mapping} from variables to real numbers, where
+$\mathscr{V}$ is the set of all variables, 
+and $\mathscr{S}$ is the set of states.
+
+\textbf{First-order Logic Semantics:}
+The first-order formula $P$ is true in state $\omega$, 
+is written $\omega \vDash P$, and is defined inductively as follows:
+\vspace{-.5cm}
+\begin{itemize}
+  \item $\omega \vDash e = \hat{e}$ iff 
+    $\omega \llbracket e \rrbracket = \omega\llbracket\hat{e}\rrbracket$
+  \item $\omega \vDash e \geq \hat{e}$ iff
+    $\omega\llbracket e \rrbracket \geq \omega\llbracket \hat{e} \rrbracket$.
+  \item $\omega \vDash \neg P$ iff 
+    $\omega \nvDash P$. 
+  \item $\omega \vDash P \cap Q$ iff 
+    $\omega \vDash P$ and $\omega \vDash Q$.
+  \item $\omega \vDash P \cup Q$ iff 
+    $\omega \vDash P$ or $\omega \vDash Q$.
+  \item $\omega \vDash P \rightarrow Q$ iff 
+    $\omega \nvDash P$ or $\omega \vDash Q$.
+  \item $\omega \vDash P \leftrightarrow Q$ iff 
+    ($\omega \vDash P$ and $\omega \vDash Q$) or 
+    ($\omega \nvDash P$ and $\omega \nvDash Q$).
+  \item $\omega \vDash \forall x P$ iff 
+    $\omega^d_x \vDash P$ for all $d \in \mathds{R}$. 
+  \item $\omega \vDash \exists x P$ iff 
+    $\omega^d_x \vDash P$ for some $d \in \mathds{R}$.
+\end{itemize}
+\vspace{-.5cm}
+\textbf{State Modification:}
+\begin{align*}
+  \omega^d_x(y) = 
+  \begin{cases} 
+    d \text{, if } y \text{ is the modified variable } x \\
+    \omega(y) \text{, if } y \text{ is another variable}
+  \end{cases}
+\end{align*}
+
+If $\omega \vDash P$, then we say that $P$ is true at $\omega$ 
+or that $\omega$ is a model of $P$. 
+Otherwise, i.e., if $\omega \nvDash P$, we say that $P$ is false at $\omega$. 
+A formula $P$ is \ctextbf{valid}, written $\vDash P$, 
+iff $\omega \vDash P$ for all states $\omega$. 
+Formula $P$ is called \ctextbf{satisfiable} 
+iff there is a state $\omega$ such that $\omega \vDash P$. 
+Formula $P$ is \ctextbf{unsatisfiable} 
+iff there is no such $\omega$. 
+The set of states in which formula $P$ is true is written 
+$\llbracket P \rrbracket = \{ \omega : \omega \vDash P \}$ .
+
+\textbf{Semantics of Continuous Program:}
+The state $\nu$ is reachable from initial state $\omega$ 
+by the continuous program $x_1' = e_1, \dots, x_n' = e_n \& Q$
+iff there is a \ctextbf{solution} $\varphi$ of some duration $r \geq 0$
+along the program from state $\omega$ to state $\nu$, i.e., 
+a function $\varphi:[0, r] \rightarrow \mathscr{S}$ such that:
+\vspace{-.5cm}
+\begin{itemize}
+  \item initial and final states match: $\varphi(0) = \omega, \varphi(r) = \nu$;
+  \item $\varphi$ respects the differential equations: For each variable $x_i$, 
+    the value $\varphi(\zeta)\llbracket x_i \rrbracket$ of $x_i$ at 
+    state $\varphi(\zeta)$ is continuous in $\zeta$ on $[0, r]$ and,
+    if $r > 0$, has a time-derivative of value 
+    $\varphi(\zeta)\llbracket e_i \rrbracket$ at each time $\zeta \in [0, r]$, 
+    i.e.,
+    \begin{align*}
+      \frac{d\varphi(t)(x_i)}{dt}(\zeta) = \varphi(\zeta)\llbracket e_i \rrbracket
+    \end{align*}
+  \item the value of other variables $y \notin \{x_1, \dots, x_n\}$ remains 
+    constant throughout the continuous evolution, that is 
+    $\varphi(\zeta)\llbracket y \rrbracket = \omega\llbracket y \rrbracket$ 
+    for all times $\zeta \in [0, r]$;
+  \item and $\varphi$ respects the evolution domain at all times: 
+    $\varphi(\zeta) \in \llbracket Q \rrbracket$ for each $\zeta \in [0, r]$.
+\end{itemize}
+
+\crule

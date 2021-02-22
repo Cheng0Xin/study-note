@@ -10,9 +10,10 @@
 
 % Mathematics
 \RequirePackage{amsmath}
-\RequirePackage{dsfont} % used to represent \mathds{R}
-\RequirePackage{mathrsfs} % used to represent \mathscr{S}
-\RequirePackage{amssymb} % used to represent \nvDash
+\RequirePackage{dsfont} % represent \mathds{R}
+\RequirePackage{mathrsfs} % represent \mathscr{S}
+\RequirePackage{amssymb} % represent \nvDash
+\RequirePackage{stmaryrd} % represent \llbracket
 
 % Table
 \RequirePackage{array}
@@ -178,7 +179,7 @@
 }
 
 \newcommand{\ctextit}[1]{ % textbf red
-  \!\colorbox{blue!30}{#1}\!
+  \!\colorbox{yellow!30}{#1}\!
 }
 
 \newcommand{\crule}{
