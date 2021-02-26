@@ -1,0 +1,79 @@
+\subsection{Choice and Control}
+
+\textbf{Hybrid Program (HP):} HPs are defined by the following grammar 
+($\alpha, \beta$ are HPs, $x$ is a variable, $e$ is a term possibly 
+containing $x$, and $Q$ is a formula of first-order logic of 
+real arithmetic):
+\begin{align*}
+  \alpha, \beta ::= x := e | ?Q | x' = f(x) \& Q | \alpha \cup \beta 
+    | \alpha ; \beta | \alpha^*
+\end{align*}
+\vspace{-.5cm}
+\begin{itemize}
+  \item \textbf{Sequential composition: $\alpha ; \beta$};
+  \item \textbf{Test: $?Q$};
+  \item \textbf{Nondeterministic choice: $\alpha \cup \beta$};
+  \item \textbf{Nondeterministic repeat: $\alpha^*$}.
+\end{itemize}
+
+\textbf{Transition semantics of HPs:}
+
+\textbf{Transition semantics of ODEs:}
+
+\crule
+
+% This section complements the previous understanding of continuous dynamics with an understanding of the discrete dynamics caused by choices and controls in cyber-physical systems.
+% It also interfaces the continuous dynamics of differential equations with the discrete dynamics of conventional computer programs by directly integrating differential equations with discrete programming languages.
+% 
+% Here is a question that how the dynamics and cyber parts interact?
+% \ctextit{The sole interface between continuous physical capabilities and cyber capabilities was by way of their evolution domain.}
+% The evolution domain gives the cyber part a way to update the system state $\omega$.
+% In this section, we will discusses the following issues:
+% \begin{itemize}
+%   \item How does the cyber part take control?
+%   \item How do we describe what the cyber elements compute afterwards?
+%   \item What descriptions explain how cyber interacts with physics?
+% \end{itemize}
+% 
+% \subsection{A gradual introduction of Hybrid Programs}
+% 
+% One way cyber and physics can interact is if \ctextbf{computer provides input to physics}.
+% Such a behavior corresponds to a sequential composition $(\alpha ; \beta)$ in which first the HP $\alpha$ on the left of the sequential composition operator (;) runs and, when it's done, the HP $\beta$ on the right of operator (;) runs.
+% Such as '$a:=a+1;\{x'=v, v'=a\}$'. The first part on the left of (;) just likes that the computer provides input, and then, the other side evolutes according to the current state.
+% Here is a more complex example:
+% \begin{align*}
+%   a := -2; \{x' = v, v' = a\}; \\
+%   a := 0.25; \{x' = v, v' = a\}; \\
+%   a := -2; \{x' = v, v' = a\}; \\
+%   a := 0.25; \{x' = v, v' = a\}; \\
+%   a := -2; \{x' = v, v' = a\}; \\
+%   a := 0; \{x' = v, v' = a\}; \\
+% \end{align*}
+% In this example, the value of $a$ is changed to different real numbers, 
+% which effects the evolution of differential equation $x' = v, v' = a$.
+% 
+% \subsection{Choice in Hybrid Programs}
+% 
+% The nondeterministic choice has the form like $(\alpha \cup \beta)$. 
+% HP $\alpha$ and $\beta$ are chosen to execute.
+% The choice is resolved according to Note. \ref{note:ncup}
+% \clanewnote{Nondeterministic $\cup$}{note:ncup}{
+%   The choice ($\cup$) is nondeterministic. 
+%   That is, every time a choice $\alpha \cup \beta$ runs, 
+%   exactly one of the two choices, $\alpha$ or $\beta$, 
+%   is chosen to run.
+%   The choice is \textbf{nondeterministic}, i.e., there is no prior way of telling which of the two choices is going to be chosen.
+%   Both outcomes are perfectly possible and a safe system design needs to be prepared to handle either outcome.
+% }
+% Moreover, we can guard some choice to prevent unexpected execution.
+% Tests in Hybrid Programs '$?Q$', where $Q$ is a first-order formula.
+% The tests follow the form: 
+% \begin{align*}
+%   (?Q_1;\alpha \cup \beta)\{x'=f(x) \& Q_2\}
+% \end{align*}
+% Only $\omega \vDash Q_1$, $\alpha$ can be chosen to run.
+% 
+% In addition, the cyber parts are allowed to change their minds.
+% Hence, repetitions is another important component of HP.
+% It follows the form:$(\alpha)^*$.
+% Also, the duration and times of repetition are nondeterministic.
