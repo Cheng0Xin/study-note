@@ -54,54 +54,50 @@
 
 % Definition, Theorem, Lemma
 \RequirePackage{mdframed}
+\RequirePackage{amsthm}
+\theoremstyle{definition}
 \newmdtheoremenv{cla_def}{Definition}
 \newmdtheoremenv{cla_thm}{Theorem}
 \newmdtheoremenv{cla_lemma}{Lemma}
 \newmdtheoremenv{cla_example}{Example}
 \newmdtheoremenv{cla_note}{Note}
 
-\newcommand{\clanewdef}[3]{
+\newcommand{\clanewdef}[2]{
   \begin{cla_def}
     (\textbf{#1}).
-
-    #3
-    \label{#2}
+    #2
   \end{cla_def}
 }
 
-\newcommand{\clanewlemma}[3]{
+\newcommand{\clanewlemma}[2]{
   \begin{cla_lemma}
     (\textbf{#1}).
 
-    #3
-    \label{#2}
+    #2
   \end{cla_lemma}
 }
 
-\newcommand{\clanewthm}[3]{
+\newcommand{\clanewthm}[2]{
   \begin{cla_thm}
     (\textbf{#1}).
 
-    #3
-    \label{#2}
+    #2
   \end{cla_thm}
 }
 
-\newcommand{\clanewexample}[3]{
+\newcommand{\clanewexample}[2]{
   \begin{cla_example}
     (\textbf{#1}).
 
-    #3
-    \label{#2}
+    #2
   \end{cla_example}
 }
 
-\newcommand{\clanewnote}[3]{
+\newcommand{\clanewnote}[2]{
   \begin{cla_note}
     (\textbf{#1}).
 
-    #3
-    \label{#2}
+    #2
   \end{cla_note}
 }
 
