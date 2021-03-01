@@ -18,14 +18,21 @@ Techniques surrounding \ctextbf{Domain Specific Modeling Language (DSML)}:
 \begin{figure}[H]
 \centering  
 \begin{tikzpicture}
-  \tikzstyle{textnode}=[rectangle, draw = black]
+  \tikzstyle{textnode}=[rectangle, draw = black, text width=4.5cm]
 
   \node[textnode] (fpd) {\clanodetxt{Step 1: Syntax and Semantics of 
     Formalized Process Description}};
 
-  \node[textnode] (pn) [below = of fpd] {\clanodetxt{Step 2.1: Description of 
+  \node[textnode] (st-pn-2) [below = of fpd] {\clanodetxt{Step 2.2: Description of 
     the model with Petri Net}}
     edge[<-] (fpd);
+  \node[textnode] (st-pn-1) [left = of st-pn-2] {\clanodetxt{Step 2.1: Description of 
+    the model with Differential Logic}}
+    edge[<-] (fpd);
+  \node[textnode] (st-pn-3) [right = of st-pn-2] {\clanodetxt{Step 2.3: Learning 
+    model}}
+    edge[<-] (fpd);
+  
 \end{tikzpicture}
 \caption{Road map.}
 \end{figure}
@@ -53,11 +60,15 @@ Techniques surrounding \ctextbf{Domain Specific Modeling Language (DSML)}:
   \centering
   \includegraphics[width=.8\textwidth]{notes/project/AITOC-2020/img/FPB.png}
   \caption{A sample FPB}
+  \label{fig:aitoc-wp1-as-fpb}
 \end{figure}
 
-- Fig. 7 in paper {2011, Improved diagnosis by combining structural and process knowledge}
-- use Cosmos ?
-- logic ?
+Fig. \ref{fig:aitoc-wp1-as-fpb} in paper \textit{2014, Integrating Plant and 
+  Process Information as a Basis for Automated Plant Diagnosis Tasks}.
+
+use Cosmos ?
+
+logic ?
 
 \textbf{Differential Logic description of FPB}
 
