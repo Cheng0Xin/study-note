@@ -1,0 +1,46 @@
+\section{Digital Twin}
+
+\crule
+
+\subsection{2020, Combining heterogeneous digital human simulations: presenting 
+  a novel co-simulation approach for incorporating different character 
+  animation technologies}
+
+\textbf{Reference:} \cite{gaisbauer2020combining}
+
+A variety of simulation techniques and tools are available, ranging from 
+\vspace{-.5cm}
+\begin{itemize}
+  \item \ctextbf{motion-capture-based animation systems}, and
+  \item \ctextbf{deep learning to physics-based motion synthesis}.
+\end{itemize}
+
+\clanewdef{Functional Mock-up Interface (FMI)}{
+  The FMI defines an interface to be implemented by an executable called an 
+  \ctextbf{Functional Mock-up Unit (FMU)}. The FMI functions are used (called)
+  by a simulation environment to create one or more instances of the FMU and to 
+  simulate them, typically together with other models.
+}
+
+\textbf{Purpose:}
+Inspired by the FMI standard, a novel framework to incorporate multiple digital 
+human simulation approaches from multiple domains is presented. 
+In particular, the paper introduces the overall concept of the so-called 
+\ctextbf{Motion Model Units}, as well as its underlying technical architecture.
+As main contribution, a novel \ctextbf{co-simulation} for the 
+orchestration of multiple digital human simulation approaches is presented.
+
+\textbf{Traditional motion synthesis technologies:}
+\vspace{-.5cm}
+\begin{itemize}
+  \item \ctextbf{Data-driven} approaches: Barycentric-, K-Nearest-Neighbor-,
+    Radial Basis Function- interpolation and Inverse blending.
+    \textbf{Disadvantages:} the approaches only cover the range given 
+    by the underlying data, however, generating naturally looking results.
+  \item \ctextbf{Model-based} approaches: trajectory optimization and 
+    reinforcement learning.
+    \textbf{Disadvantages:} the approaches are generic but also more difficult
+    to parameterize. 
+\end{itemize}
+
+\crule

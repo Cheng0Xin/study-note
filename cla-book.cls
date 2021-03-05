@@ -32,7 +32,9 @@
 % Packages for drawing
 \RequirePackage{pgf}
 \RequirePackage{tikz}
-\usetikzlibrary{chains, automata, positioning, arrows, arrows, backgrounds, calc, matrix}
+\usetikzlibrary{chains, automata, positioning, arrows, arrows, backgrounds, 
+calc, matrix, shapes, shapes.misc}
+\newcommand{\clanodetxt}[1]{\textbf{\footnotesize{#1}}}
 
 % Packages for picture
 \RequirePackage{graphics}
@@ -108,7 +110,6 @@
 \RequirePackage{listings}
 \RequirePackage{color}
 \RequirePackage{xcolor}
-% \RequirePackage[dvipsnames]{xcolor}
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}

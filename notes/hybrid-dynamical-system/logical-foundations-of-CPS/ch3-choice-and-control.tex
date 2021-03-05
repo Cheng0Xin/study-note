@@ -1,5 +1,7 @@
 \subsection{Choice and Control}
 
+\subsubsection{Hybrid Programs}
+
 \clanewdef{Hybrid Program (HP)}{ 
   HPs are defined by the following grammar 
   ($\alpha, \beta$ are HPs, $x$ is a variable, $e$ is a term possibly 
@@ -63,5 +65,11 @@ is reachable from initial state $\omega$ by running HP $\alpha$.
   with $\varphi(z)(x') \stackrel{\text{def}}{=} \frac{d\varphi(t)(x)}{dt}(z)$ 
   and $\varphi(z) = \varphi(0) \text{ except at } x, x'$.
 }
+
+\subsubsection{Hybrid Program Design}
+
+\textbf{Principle 1}: Verification models benefit from nondeterminism,
+because if highly nondeterministic models have no unsafe behaviors then all 
+more specific refinements have no unsafe behaviors either.
 
 \crule
